@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Email Validation Example</h1>
+    <form id="emailForm" onsubmit="return validateEmail()">
+        <label for="email">Email: *</label>
+        <input type="text" id="email" name="email" placeholder="Enter your email">
+        <span id="emailError" class="error"></span>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function validateEmail() {
+            const email = document.getElementById("email").value;
+            const emailError = document.getElementById("emailError");
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex
+
+            // Clear previous error
+            emailError.innerText = "";
+
+            // Validate email format
+            if (!emailRegex.test(email)) {
+                emailError.innerText = "Please enter a valid email address.";
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+    </script>
+
+</body>
+</html>

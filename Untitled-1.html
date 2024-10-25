@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+</head>
+
+<body>
+    <form id="emailForm">
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email">
+        <button type="submit">Validate</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        // Regular Expression for Email Validation
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        // Form Submission Handler
+        document.getElementById('emailForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            const email = document.getElementById('email').value;
+            const result = document.getElementById('result');
+
+            if (validateEmail(email)) {
+                result.textContent = "Valid email!";
+                result.style.color = "green";
+            } else {
+                result.textContent = "Invalid email!";
+                result.style.color = "red";
+            }
+        });
+    </script>
+</body>
+
+</html>
